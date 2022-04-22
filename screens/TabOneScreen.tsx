@@ -7,8 +7,12 @@ import { RootTabScreenProps } from '../types';
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <Text style={styles.title}>About This App</Text>
+      <br></br>
+      <Text>There are three tabs in this app.</Text>
+      <Text>About: Introductory Page of the App</Text>
+      <Text>Show All School: You can search school information here.</Text>
+      <Text>Take Note: You can jot down school information if you find something useful.</Text>
     </View>
   );
 }
@@ -22,10 +26,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+  }
 });
