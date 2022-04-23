@@ -54,6 +54,9 @@ const App = () =>{
 
   return (
     <View style={styles.container}>
+      <button>
+        
+      </button>
       <TextInput
         onChangeText={(item) => searchFilter(item)}
         style={styles.searchInput}
