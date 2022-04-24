@@ -17,10 +17,10 @@ const TodoInsert = ({onAddTodo}) => {
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.input}
-        placeholder="Add an item!"
+        placeholder="Type here!"
         value={newTodoItem}
         onChangeText={todoInputHandler}
-        placeholderTextColor={'#999'}
+        placeholderTextColor={'grey'}
         autoCorrect={false}
       />
       <View style={styles.button}>
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   button: {
-    marginRight: 10,
-  },
+    marginLeft: -200
+  }
 });
 
 export default TodoInsert;
