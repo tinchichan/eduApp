@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,32 +6,31 @@ import {
   View,
   Text,
   ScrollView,
-} from 'react-native';
-import TodoInsert from '../components/TodoInsert';
-import TodoList from '../components/TodoList';
+} from 'react-native'
+import TodoInsert from '../components/TodoInsert'
+import TodoList from '../components/TodoList'
 
 const App = () => {
+  const [todos, setTodos] = useState<any>([])
 
-  const [todos, setTodos] = useState([]);
-
-  const addTodo = text => {
+  const addTodo = (text: string) => {
     setTodos([
       ...todos,
-      {id: Math.random().toString(), textValue: text, checked: false},
-    ]);
-  };
+      { id: Math.random().toString(), textValue: text, checked: false },
+    ])
+  }
 
-  const onRemove = id => e => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  };
+  const onRemove = (id) => (e) => {
+    setTodos(todos.filter((todo) => todo.id !== id))
+  }
 
-  const onToggle = id => e => {
+  const onToggle = (id) => (e) => {
     setTodos(
-      todos.map(todo =>
-        todo.id === id ? {...todo, checked: !todo.checked} : todo,
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo,
       ),
-    );
-  };
+    )
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,8 +39,8 @@ const App = () => {
         <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       </View>
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -61,6 +60,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginLeft: 20,
   },
-});
+})
 
-export default App;
+export default App
