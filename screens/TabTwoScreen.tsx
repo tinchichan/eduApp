@@ -269,6 +269,7 @@ const styles = StyleSheet.create({
     width: "100%",
     fontSize: 20,
     lineHeight: 40,
+    flex: 1,
   },
 });
 
