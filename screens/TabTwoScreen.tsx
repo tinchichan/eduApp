@@ -48,9 +48,9 @@ const URLklc =
 
 const App = () => {
   //hook
-  const [searchInput, setSearchInput] = useState('')
-  const [data, setData] = useState([])
-  const [filterItems, setFilterItem] = useState([])
+  const [data, setData] = useState([]);
+  const [filterItems, setFilterItem] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
   const getApi = async (url) => {
     let res = await fetch(url, { method: 'GET' })
@@ -60,30 +60,20 @@ const App = () => {
     console.log(json.results)
   }
 
-  //render
-  // useEffect(() => {
-  //   getApi();
-  // }, [])
-
   //search bar
   const searchFilter = (text: any) => {
-    if (text) {
-      const newData = data.filter(function (item) {
-        return Object.values(item).some(
-          (e) =>
-            !searchInput ||
-            (e as any)
-              .toString()
-              .toUpperCase()
-              .includes(searchInput.toUpperCase()),
-        )
+    setSearchInput(text)
+    if (text != "") {
+      const newData = data.filter((item) => {
+        return Object.values(item).join('').toLowerCase().includes(text.toLowerCase());
       })
+      // setSearchInput(text)
       setFilterItem(newData)
-      setSearchInput(text)
       console.log(newData)
+      console.log(text)
     } else {
+      // setSearchInput(text)
       setFilterItem(data)
-      setSearchInput(text)
     }
   }
 
@@ -91,11 +81,11 @@ const App = () => {
     return (
       <View
         style={{
-          height: 2,
+          height: 1,
           width: '100%',
-          backgroundColor: '#CED0CE',
-          marginLeft: 10,
-          marginRight: 10,
+          backgroundColor: 'purple',
+          marginLeft: 5,
+          marginRight: 5,
         }}
       />
     )
@@ -217,7 +207,7 @@ const App = () => {
         </Button>
       </View>
       <TextInput
-        onChangeText={(item) => searchFilter(item)}
+        onChange={(item) => searchFilter(item.target.value)}
         style={styles.searchInput}
         placeholder="Search Here"
       />

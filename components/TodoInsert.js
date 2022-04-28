@@ -14,7 +14,7 @@ const TodoInsert = ({onAddTodo}) => {
   };
 
   return (
-    <View style={styles.inputContainer}>
+    <View style={styles.Container}>
       <TextInput
         style={styles.input}
         placeholder="Type here!"
@@ -31,7 +31,7 @@ const TodoInsert = ({onAddTodo}) => {
 };
 
 const styles = StyleSheet.create({
-  inputContainer: {
+  Container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

@@ -11,32 +11,25 @@ import TodoInsert from '../components/TodoInsert'
 import TodoList from '../components/TodoList'
 
 const App = () => {
+
   const [todos, setTodos] = useState<any>([])
 
   const addTodo = (text: string) => {
     setTodos([
       ...todos,
-      { id: Math.random().toString(), textValue: text, checked: false },
+      { id: Math.random().toString(), textValue: text},
     ])
   }
 
-  const onRemove = (id) => (e) => {
+  const rm = (id) => (e) => {
     setTodos(todos.filter((todo) => todo.id !== id))
-  }
-
-  const onToggle = (id) => (e) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : todo,
-      ),
-    )
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
         <TodoInsert onAddTodo={addTodo} />
-        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+        <TodoList todos={todos} rm={rm}/>
       </View>
     </SafeAreaView>
   )

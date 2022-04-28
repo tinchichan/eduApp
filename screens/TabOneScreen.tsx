@@ -3,8 +3,6 @@ import EditScreenInfo from '../components/EditScreenInfo'
 import { Text, View } from '../components/Themed'
 import { RootTabScreenProps } from '../types'
 
-const bgImage = { uri: 'https://reactjs.org/logo-og.png' }
-
 export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<'TabOne'>) {
