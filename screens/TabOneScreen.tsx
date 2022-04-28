@@ -2,12 +2,28 @@ import { StyleSheet } from 'react-native'
 import EditScreenInfo from '../components/EditScreenInfo'
 import { Text, View } from '../components/Themed'
 import { RootTabScreenProps } from '../types'
+import { useTranslation } from 'react-i18next'
+import { changeLanguage } from 'i18next'
+import { useCallback } from 'react'
+import { Button } from 'react-native'
 
 export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<'TabOne'>) {
+  const { t, i18n } = useTranslation()
+
+  const changeLanguage = useCallback(() => {
+    if (i18n.language == 'zh') {
+      i18n.changeLanguage('en')
+      return
+    }
+    i18n.changeLanguage('zh')
+  }, [])
+
   return (
     <View style={styles.container}>
+      <Button title="change language" onPress={changeLanguage}></Button>
+      <Text>{t('a')}</Text>
       <Text style={styles.title}>About This App</Text>
       <Text>{'\n'}</Text>
       <Text style={styles.para}>
