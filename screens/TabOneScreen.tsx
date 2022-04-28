@@ -12,38 +12,23 @@ export default function TabOneScreen({
 }: RootTabScreenProps<'TabOne'>) {
   const { t, i18n } = useTranslation()
 
-  const changeLanguage = useCallback(() => {
-    if (i18n.language == 'zh') {
-      i18n.changeLanguage('en')
-      return
-    }
-    i18n.changeLanguage('zh')
-  }, [])
-
   return (
     <View style={styles.container}>
-      <Button title="change language" onPress={changeLanguage}></Button>
-      <Text>{t('a')}</Text>
-      <Text style={styles.title}>About This App</Text>
+      <Text style={styles.title}>{t('title')}</Text>
       <Text>{'\n'}</Text>
       <Text style={styles.para}>
-        There are <Text style={{ fontWeight: 'bold' }}>three tabs</Text> in this
-        app.
+        {t('desc')}
       </Text>
       <Text>{'\n'}</Text>
       <View>
         <Text style={styles.para}>
-          <Text style={{ fontWeight: 'bold' }}>About</Text>: Introductory Page
-          of the App
+          <Text style={{ fontWeight: 'bold' }}>About</Text>: {t('para1')}
         </Text>
         <Text style={styles.para}>
-          <Text style={{ fontWeight: 'bold' }}>Schools</Text>: Search All Hong
-          Kong schools information here. First choose the district, then search
-          for specific info you prefer.
+          <Text style={{ fontWeight: 'bold' }}>Schools</Text>: {t('para2')}
         </Text>
         <Text style={styles.para}>
-          <Text style={{ fontWeight: 'bold' }}>Take Note</Text>: Jot down school
-          information if you find something useful.
+          <Text style={{ fontWeight: 'bold' }}>Take Note</Text>: {t('para3')}
         </Text>
       </View>
     </View>

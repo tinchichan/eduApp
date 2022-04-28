@@ -16,12 +16,20 @@ export default function App() {
     return {
       en: {
         translation: {
-          a: 'a',
+          title: 'About This App',
+          desc: 'There are three tabs in this app.',
+          para1: 'Introductory Page of the App.',
+          para2: 'Search All Hong Kong schools information here. First choose the district, then search for specific info you prefer.',
+          para3: 'Take Note: Jot down school information if you find something useful.',
         },
       },
       zh: {
         translation: {
-          a: '甲',
+          title: '關於此應用程式',
+          desc: '此應用程式有三個頁面',
+          para1: '此應用程式的簡介頁',
+          para2: '可搜尋全港的院校(包括幼稚園,小學,中學)。首先, 揀選地區。之後，搜尋你有興趣的院校資料。',
+          para3: '筆記功能，記下有用的資料。',
         },
       },
     }

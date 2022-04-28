@@ -1,14 +1,9 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { ColorSchemeName, Button } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import NotFoundScreen from '../screens/NotFoundScreen';
@@ -17,6 +12,9 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import TabThreeScreen from '../screens/TabThreeScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import { useTranslation } from 'react-i18next'
+import { changeLanguage } from 'i18next'
+import { useCallback } from 'react'
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -52,6 +50,16 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
+  const { t, i18n } = useTranslation()
+
+  const changeLanguage = useCallback(() => {
+    if (i18n.language == 'zh') {
+      i18n.changeLanguage('en')
+      return
+    }
+    i18n.changeLanguage('zh')
+  }, [])
+
   return (
     <BottomTab.Navigator
       initialRouteName="TabOne"
@@ -64,6 +72,13 @@ function BottomTabNavigator() {
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           title: 'About',
           tabBarIcon: ({ color }) => <TabBarIcon name="question-circle" color={color} />,
+          headerRight: () => (
+            <Button
+              title="changeLanguage"
+              onPress={() => changeLanguage()}
+              >
+            </Button>
+          ),
         })}
       />
       <BottomTab.Screen
