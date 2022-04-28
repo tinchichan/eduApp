@@ -1,0 +1,3 @@
+# eduApp
+
+.gun
